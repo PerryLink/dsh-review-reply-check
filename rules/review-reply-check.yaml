@@ -1,0 +1,187 @@
+# 审稿意见逐条回应覆盖核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ⚠️⚠️ 本规则库的诚实说明：**excerpt 一律不是引文。**
+#   本插件核对的是"审稿意见逐条回应表"的**覆盖完整性与证据定位**：
+#     审稿意见与作者回应是否成对填写、回应是否给出修改说明与修改位置、
+#     处理状态是否在册、有回应的是否记录回应人与回应日期、
+#     意见序号是否重复、回应日期是否不晚于返修期限、是否残留模板占位符。
+#   其规范载体是**《科学技术报告、学位论文和学术论文的编写格式》（GB/T 7713.1）**、
+#   **《中国高校科技期刊编排规范》**与各期刊的**同行评议与返修规定**。
+#   **核查未取得这些文件的逐字条文**，故每条 excerpt 如实写明，kind 降为 derived-from-principle（封顶 warn）。
+#
+# ⚠️⚠️ 另一条**必须保留**的边界：**本插件绝不判定回应是否充分、
+#   修改是否到位、是否应当录用或退稿**。
+#   那是编辑与审稿人的学术判断，也是同行评议的实质内容。
+#   → 本插件只核对**覆盖与留痕**："每条意见是否都有回应""回应是否指明了改在哪里"。
+#     它**看不到稿件本身**，因此**发现不了"回应说改了、其实没改"**——
+#     这是它最重要的能力边界。
+#   → **处理状态清单（statuses）与意见类型清单（types）都出厂为空。**
+
+plugin: dsh-review-reply-check
+version: "2026.1"
+
+rules:
+  - id: RR-001
+    title: 每条审稿意见都应填写意见内容
+    severity: warn
+    basis:
+      document: 《中国高校科技期刊编排规范》
+      number: 现行版本与条号本次未核实
+      clause: 关于同行评议意见记录的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.moe.gov.cn/
+    params:
+        check:
+          kind: presence
+          field: comment
+          fix: 补填审稿意见内容；本条只核对是否填写
+    note: >-
+      逐条回应的前提是**意见本身被完整抄录**：缺了意见内容，
+      回应就失去了对象，也无法向编辑证明"哪一条对应哪一段"。本次未取得明文条号，故封顶 warn。
+      ⚠️ 本条只核对意见栏是否填写，**不判断该意见是否成立、是否属于学术判断分歧**。
+
+  - id: RR-002
+    title: 每条审稿意见都应有作者回应
+    severity: warn
+    basis:
+      document: 《中国高校科技期刊编排规范》
+      number: 现行版本与条号本次未核实
+      clause: 关于作者修回与回应的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.moe.gov.cn/
+    params:
+        check:
+          kind: conditionalPresence
+          conditionField: comment
+          requiredFields: ["response"]
+          conditionValues: []
+          fix: 补填作者回应；本条只核对是否回应，不判断回应是否充分
+    note: >-
+      **"未回应"与"不同意"是两件不同的事**：审稿人可以接受作者的不同意，
+      但不能接受意见被略过。因此逐条回应的**覆盖率**是返修质量最直接的指标。
+      本次未取得明文条号，故封顶 warn。
+      本条**只在意见内容已填写时**要求回应。
+      ⚠️ 本条只核对回应栏是否**填写**，**不判断回应是否充分、是否说服得了审稿人**。
+      若作者确有一条不回应（例如意见重复），**建议在回应栏写明理由**，而不是留空。
+
+  - id: RR-003
+    title: 有回应的条目应给出修改说明与修改位置
+    severity: warn
+    basis:
+      document: 《中国高校科技期刊编排规范》
+      number: 现行版本与条号本次未核实
+      clause: 关于修改说明的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.moe.gov.cn/
+    params:
+        check:
+          kind: conditionalPresence
+          conditionField: response
+          requiredFields: ["revision","revisionLocation"]
+          conditionValues: []
+          fix: 补填修改说明与修改位置（页行号）；本条只核对是否写明
+    note: >-
+      回应若不说"改在哪里"，编辑与审稿人就只能重读全文去找 ——
+      **这是返修往返次数居高不下的常见原因**。本次未取得明文条号，故封顶 warn。
+      本条**只在回应已填写时**要求修改说明与修改位置。
+      ⚠️ 本条只核对两栏是否**填写**，**不核对所写位置是否真有该处改动**——
+      比对稿件需要看到稿件本身，本插件看不到（这是它最重要的能力边界）。
+
+  - id: RR-004
+    title: 处理状态应使用本机构口径的取值
+    severity: info
+    basis:
+      document: 本期刊同行评议与返修规定（本机构配置）
+      number: 无统一标准（本条依据为本机构配置的状态口径）
+      clause: 关于意见处理状态的条款（本次未取得条号）
+      excerpt: 本条依据为本机构配置的口径，不存在可引用的标准条文；本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.moe.gov.cn/
+    params:
+        check:
+          kind: enum
+          field: status
+          values: []
+    note: >-
+      values 出厂为空，表示**未配置**，本条进 skipped。
+      依据说明：处理状态的口径（例如「已修改」「部分修改」「不修改并说明理由」「已删除」）
+      随**本期刊的返修规定**变化，本插件**不硬编码任何取值清单**，
+      也**不判断某一状态是否意味着该意见已被妥善处理**。
+      本条只核对所填值是否在册。
+
+  - id: RR-005
+    title: 回应日期不应晚于返修期限
+    severity: info
+    basis:
+      document: 本期刊同行评议与返修规定（本机构配置）
+      number: 无统一标准（本条依据为台账写明的返修期限）
+      clause: 关于返修期限的条款（本次未取得条号）
+      excerpt: 本条依据为本机构配置的口径，不存在可引用的标准条文；本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.moe.gov.cn/
+    params:
+        check:
+          kind: date
+          field: respondedAt
+          notAfterField: dueAt
+    note: >-
+      本条只在台账**已经写出返修期限**（dueAt）时，核对回应日期是否落在期限内。
+      依据说明：**返修期限由各期刊规定，且作者可以申请延期**，
+      因此本插件**不内置任何天数**、也**不替使用方推算期限**。
+      dueAt 为空时本条进 skipped，**不会假定任何期限**。
+      本条命中只表示"与你写在台账里的期限不一致"，**不表示已经逾期** ——
+      是否逾期需结合实际沟通与延期记录判断。
+
+  - id: RR-006
+    title: 回应表应声明稿件与审稿轮次
+    severity: warn
+    basis:
+      document: 《中国高校科技期刊编排规范》
+      number: 现行版本与条号本次未核实
+      clause: 关于稿件与审稿记录的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.moe.gov.cn/
+    params:
+        check:
+          kind: headerPresence
+          fields: ["manuscriptNo","round"]
+    note: >-
+      回应表若不写明稿件与**审稿轮次**，多次返修的意见就会混在一起，
+      无法判断哪一条是这一轮新提的。本次未取得明文条号，故封顶 warn。
+      配置项 manuscriptNo 对应稿件编号，round 对应审稿轮次。
+      ⚠️ 本条只核对表头是否声明，**不判断该轮次记录是否完整**。
+
+  - id: RR-007
+    title: 意见序号不应在表内重复
+    severity: warn
+    basis:
+      document: 《中国高校科技期刊编排规范》
+      number: 现行版本与条号本次未核实
+      clause: 关于同行评议意见编号的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.moe.gov.cn/
+    params:
+        check:
+          kind: unique
+          field: commentNo
+    note: >-
+      序号唯一是"逐条回应"的**前提条件**：序号重复会让覆盖率统计失真，
+      也无法与审稿单上的编号对应。本次未取得明文条号，故封顶 warn。
+      ⚠️ 多位审稿人的意见合并登记时，**建议在编号中体现审稿人**（如 R1-3、R2-1），
+      而不是各自从 1 开始 —— 否则本条会报出重复。
+
+disabled: []

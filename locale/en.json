@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Review reply check",
+    "description": "审稿意见逐条回应覆盖核对（按意见与回应一一对应核对覆盖完整性，仅提示差异，不作出定性结论）"
+  }
+}

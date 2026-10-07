@@ -1,0 +1,31 @@
+{
+  "ruleId": "RR-004",
+  "configure": {
+    "RR-004": {
+      "values": [
+        "已修改",
+        "部分修改",
+        "不修改并说明理由",
+        "已删除"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "RR-004-compliant.json",
+      "expect": {
+        "ruleId": "RR-004",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "RR-004-unsafe.json",
+      "expect": {
+        "ruleId": "RR-004",
+        "count": 1
+      }
+    }
+  ]
+}
