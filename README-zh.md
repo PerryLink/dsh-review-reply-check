@@ -45,8 +45,7 @@ should be accepted.
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-review-reply-check
 dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
 ```
 
