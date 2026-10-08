@@ -1,4 +1,25 @@
-# dsh-review-reply-check
+# dsh-review-reply-check — Verificación de cobertura y rastro documental de la tabla de respuestas a los comentarios de revisión
+
+`dsh-review-reply-check` lee una tabla de respuestas a los comentarios de revisión —la cabecera del manuscrito más una fila por comentario— y comprueba la cobertura y el rastro documental de esa propia tabla: que el texto de cada comentario esté registrado, que toda fila con comentario escrito traiga respuesta del autor, que la respuesta indique la modificación hecha y dónde se hizo, que cada estado de tramitación provenga del vocabulario que usted configure, que las fechas de respuesta caigan dentro del plazo de revisión que la propia tabla declara, que la cabecera declare su manuscrito y su ronda de revisión, y que los números de comentario no se repitan.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| Una fila trae la respuesta del autor, pero la celda del texto del comentario está vacía. | `RR-001` exige el texto del comentario en cada fila: sin él la respuesta se queda sin objeto y el editor no puede ver a qué comentario corresponde. La regla comprueba solo que la celda esté rellena; no juzga si el comentario es acertado ni si es una discrepancia de juicio académico. |
+| El comentario está registrado, pero la celda de respuesta del autor sigue vacía, ¿se informa de ello? | Sí. `RR-002` exige una respuesta en toda fila cuyo comentario esté escrito, porque un comentario pasado por alto no es lo mismo que un desacuerdo que el revisor puede valorar. Comprueba solo que la celda de respuesta esté rellena, no si la respuesta es suficiente o convincente; cuando un comentario realmente no requiere cambios, el paquete aconseja escribir el motivo en esa celda en lugar de dejarla vacía. |
+| La respuesta dice que el texto se modificó, pero la nota de revisión y la columna de ubicación están vacías. | `RR-003` exige `revision` y `revisionLocation` en toda fila cuyo campo `response` esté relleno. Comprueba que las dos celdas estén escritas, no que el cambio esté donde ellas dicen: el plugin nunca ve el manuscrito, así que una nota de revisión con página y línea precisas que describe un cambio inexistente también pasa. |
+| Todas las filas traen un estado de tramitación. ¿Cómo decide la herramienta si el valor es aceptable? | `RR-004` compara el valor de la columna `status` con la lista que usted configure. Esa lista viene vacía, es decir, sin configurar, así que hasta que la rellene la regla se informa en `skipped` en lugar de pasar en silencio. Comprueba solo que el valor esté en su lista; no decide si un estado dado significa que el comentario quedó bien atendido. Como regla de configuración institucional, su severidad está topada en `info`. |
+| La fecha de respuesta es posterior a la columna del plazo, ¿significa que la revisión llegó tarde? | `RR-005` compara `respondedAt` con el `dueAt` que la propia tabla escribe, y un hallazgo solo significa que ambos no concuerdan con el plazo que usted registró, no que la revisión llegara tarde, porque los plazos varían según la revista y el autor puede pedir prórroga. No hay ningún número de días incorporado ni se calcula nada: cuando `dueAt` está vacío la regla se informa en `skipped` en lugar de suponer un plazo. |
+| Los comentarios de dos revisores se registraron juntos y ambos numeran desde 1, así que un número de comentario aparece dos veces. | `RR-007` informa de un valor repetido en `commentNo`, porque un duplicado desvirtúa el recuento de cobertura y rompe la correspondencia con el formulario de revisión. Registrarlos con una numeración que lleve al revisor —`R1-3`, `R2-1`— los mantiene únicos; la regla compara los números tal como están escritos y no fusiona ni renumera nada. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《中国高校科技期刊编排规范》 | 现行版本与条号本次未核实 | RR-001, RR-002, RR-003, RR-006, RR-007 |
+| 本期刊同行评议与返修规定（本机构配置） | 无统一标准（本条依据为本机构配置的状态口径） | RR-004 |
+| 本期刊同行评议与返修规定（本机构配置） | 无统一标准（本条依据为台账写明的返修期限） | RR-005 |
 
 **Boundary:** this plugin checks a **审稿意见逐条回应表** for coverage and evidence — that every comment is
 recorded, that every comment carries an author response, that a response states the revision made and where it was

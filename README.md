@@ -1,4 +1,25 @@
-# dsh-review-reply-check
+# dsh-review-reply-check — Review comment response table coverage and paper-trail check
+
+`dsh-review-reply-check` reads one review-comment response table — the manuscript header plus one row per comment — and checks that table's own coverage and paper trail: that each comment's text is recorded, that every row carrying a comment also carries an author response, that a response states the revision made and where it was made, that each handling status comes from the vocabulary you configure, that response dates fall inside the revision deadline the table itself states, that the table header declares its manuscript and review round, and that comment numbers are not repeated.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| A row carries an author response but the cell holding the comment text is empty. | `RR-001` requires the comment text on every row: without it the response has no object, and the editor cannot see which comment it answers. The rule checks only that the cell is filled — it does not judge whether the comment holds or whether it is a matter of academic disagreement. |
+| A comment is recorded but the author response cell is still empty — is that reported? | Yes. `RR-002` requires a response on every row whose comment cell is filled, because a comment passed over in silence is not the same as a disagreement a reviewer can weigh. It checks only that the response cell is filled, not whether the response is adequate or convincing; when a comment genuinely needs no change, the pack advises writing the reason in that cell rather than leaving it blank. |
+| The response says the text was revised, but the revision note and the location column are blank. | `RR-003` requires both `revision` and `revisionLocation` on every row whose `response` is filled. It checks that the two cells are written, not that the change is where they say it is — the plugin never sees the manuscript, so a precisely located revision note describing a change that was never made still passes. |
+| Every row has a handling status filled in. How does the tool decide whether the value is acceptable? | `RR-004` compares the value in the `status` column against the list you configure. That list ships empty, meaning not configured, so until you fill it in the rule reports itself in `skipped` rather than passing silently. It checks only that the value is on your list; it does not decide whether a given status means the comment was properly handled. As an institutional-configuration rule it is capped at `info`. |
+| The response date is later than the deadline column — does that mean the revision was overdue? | `RR-005` compares `respondedAt` against the `dueAt` the table itself writes, and a hit means only that the two disagree with the deadline you recorded — not that the revision was late, since periods differ by journal and authors may ask for extensions. No number of days is built in and nothing is inferred for you: when `dueAt` is empty the rule reports itself in `skipped` instead of assuming a deadline. |
+| Two reviewers' comments were merged into one sheet and both number from 1, so a comment number appears twice. | `RR-007` reports a repeated value in `commentNo`, because a duplicate makes the coverage count wrong and breaks the correspondence with the review form. Registering merged comments under a numbering that carries the reviewer — `R1-3`, `R2-1` — keeps them unique; the rule compares the numbers as written and does not merge or renumber anything. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《中国高校科技期刊编排规范》 | 现行版本与条号本次未核实 | RR-001, RR-002, RR-003, RR-006, RR-007 |
+| 本期刊同行评议与返修规定（本机构配置） | 无统一标准（本条依据为本机构配置的状态口径） | RR-004 |
+| 本期刊同行评议与返修规定（本机构配置） | 无统一标准（本条依据为台账写明的返修期限） | RR-005 |
 
 **Boundary:** this plugin checks a **审稿意见逐条回应表** for coverage and evidence — that every comment is
 recorded, that every comment carries an author response, that a response states the revision made and where it was
