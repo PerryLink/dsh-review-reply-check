@@ -1,6 +1,6 @@
 {
   "name": "dsh-review-reply-check",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "审稿意见逐条回应覆盖核对（按意见与回应一一对应核对覆盖完整性，仅提示差异，不作出定性结论）",
   "type": "module",
   "main": "lib/index.mjs",
