@@ -1,6 +1,14 @@
 # dsh-review-reply-check — 审稿意见逐条回应覆盖核对
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-review-reply-check` 读取一份审稿意见逐条回应表——稿件表头加每条意见一行——核对这份台账自身的覆盖完整性与留痕：每条意见的意见内容是否已抄录、凡填了意见内容的行是否都有作者回应、回应是否写明修改说明与修改位置、每行的处理状态是否取自你配置的状态口径、回应日期是否落在表内写明的返修期限之内、表头是否声明稿件编号与审稿轮次、意见序号是否重复。
+
+## 实际输出长什么样
+
+![Terminal demo of dsh-review-reply-check: real output over its RR-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-review-reply-check/main/docs/assets/dsh-review-reply-check-demo.png)
+
+本插件对自己 `RR-001` 测试夹具的**真实输出**，不是示意图。规则库不伪造引文，因此每条发现都会同时写明所引条款，以及该条款原文本次未取得。
 
 ## 它回答什么问题
 

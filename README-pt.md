@@ -1,6 +1,14 @@
 # dsh-review-reply-check — Verificação da cobertura e do rasto documental da tabela de respostas aos comentários de revisão
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-review-reply-check` lê uma tabela de respostas aos comentários de revisão —o cabeçalho do manuscrito mais uma linha por comentário— e verifica a cobertura e o rasto documental dessa própria tabela: que o texto de cada comentário esteja registado, que toda linha com comentário preenchido traga resposta do autor, que a resposta indique a alteração feita e onde foi feita, que cada estado de tratamento venha do vocabulário que você configurar, que as datas de resposta caiam dentro do prazo de revisão que a própria tabela declara, que o cabeçalho declare o seu manuscrito e a sua ronda de revisão, e que os números de comentário não se repitam.
+
+## Como é a saída
+
+![Terminal demo of dsh-review-reply-check: real output over its RR-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-review-reply-check/main/docs/assets/dsh-review-reply-check-demo.png)
+
+Saída real deste plugin sobre o seu próprio fixture de teste `RR-001` — não é uma simulação. O pacote de regras não inventa citações, por isso cada achado nomeia a cláusula aplicada e avisa que o seu texto não foi obtido.
 
 ## O que ele responde
 
