@@ -6,7 +6,9 @@
 
 ## Cómo se ve la salida
 
-![Terminal demo of dsh-review-reply-check: real output over its RR-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-review-reply-check/main/docs/assets/dsh-review-reply-check-demo.png)
+![Terminal demo of dsh-review-reply-check: real output over its RR-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-review-reply-check/main/docs/assets/dsh-review-reply-check-hero.png)
+
+![Animated terminal demo of dsh-review-reply-check](https://raw.githubusercontent.com/PerryLink/dsh-review-reply-check/main/docs/assets/dsh-review-reply-check-demo.gif)
 
 Salida real de este plugin sobre su propio fixture de prueba `RR-001` — no es un montaje. El paquete de reglas no inventa citas, así que cada hallazgo nombra la cláusula aplicada y advierte que su texto no se obtuvo.
 

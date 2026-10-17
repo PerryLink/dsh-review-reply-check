@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-review-reply-check-hero.png",
+    "kind": "hero",
+    "alt": "dsh-review-reply-check terminal output",
+    "caption": "Real dsh-review-reply-check checker output; 31 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-review-reply-check-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-review-reply-check terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]
