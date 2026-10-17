@@ -4,6 +4,13 @@
 
 `dsh-review-reply-check` 读取一份审稿意见逐条回应表——稿件表头加每条意见一行——核对这份台账自身的覆盖完整性与留痕：每条意见的意见内容是否已抄录、凡填了意见内容的行是否都有作者回应、回应是否写明修改说明与修改位置、每行的处理状态是否取自你配置的状态口径、回应日期是否落在表内写明的返修期限之内、表头是否声明稿件编号与审稿轮次、意见序号是否重复。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-review-reply-check
+dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-review-reply-check: real output over its RR-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-review-reply-check/main/docs/assets/dsh-review-reply-check-hero.png)
@@ -72,13 +79,6 @@ should be accepted.
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-review-reply-check
-dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
-```
 
 ## Configuration
 

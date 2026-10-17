@@ -4,6 +4,13 @@
 
 `dsh-review-reply-check` reads one review-comment response table — the manuscript header plus one row per comment — and checks that table's own coverage and paper trail: that each comment's text is recorded, that every row carrying a comment also carries an author response, that a response states the revision made and where it was made, that each handling status comes from the vocabulary you configure, that response dates fall inside the revision deadline the table itself states, that the table header declares its manuscript and review round, and that comment numbers are not repeated.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-review-reply-check
+dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-review-reply-check: real output over its RR-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-review-reply-check/main/docs/assets/dsh-review-reply-check-hero.png)
@@ -83,13 +90,6 @@ comment — applies a versioned rule pack, and returns a report.
 | `RR-005` | the response date falls inside the recorded deadline | info | local |
 | `RR-006` | the sheet names its manuscript and round | warn | principle |
 | `RR-007` | comment numbers are unique | warn | principle |
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-review-reply-check
-dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
-```
 
 ## Configuration
 
