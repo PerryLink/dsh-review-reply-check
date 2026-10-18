@@ -1,5 +1,7 @@
 # dsh-review-reply-check — Verificación de cobertura y rastro documental de la tabla de respuestas a los comentarios de revisión
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-review-reply-check` lee una tabla de respuestas a los comentarios de revisión —la cabecera del manuscrito más una fila por comentario— y comprueba la cobertura y el rastro documental de esa propia tabla: que el texto de cada comentario esté registrado, que toda fila con comentario escrito traiga respuesta del autor, que la respuesta indique la modificación hecha y dónde se hizo, que cada estado de tramitación provenga del vocabulario que usted configure, que las fechas de respuesta caigan dentro del plazo de revisión que la propia tabla declara, que la cabecera declare su manuscrito y su ronda de revisión, y que los números de comentario no se repitan.
