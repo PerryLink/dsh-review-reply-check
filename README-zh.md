@@ -42,27 +42,15 @@ dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份 **审稿意见逐条回应表** 的覆盖情况与证据——每条意见是否记录，每条意见是否带有作者回应，回应是否写明所做的修改及修改位置，处理状态是否取自你的取值口径，回应日期是否落在登记表写明的修回期限之内，表中是否写明稿件与审稿轮次，以及意见编号是否唯一。它**不**判定回应是否充分、修改是否到位，或稿件是否应当录用。
 
-> ### ⚠️ What this plugin can and cannot see
+> ### ⚠️ 本插件能看到什么、不能看到什么（以英文原文为准）
 >
-> **It never sees the manuscript.** It can check that a response says *where* a change was made — never that the
-> change is there, and never that it addresses the comment. `RR-003`'s note and the troubleshooting section say
-> so: a confident, well-located, entirely fictional revision note passes this plugin.
+> **它永远看不到稿件本身。** 它能核对的是回应是否写明了修改*发生在哪里*——但永远不能核对那处修改是否真的存在，也永远不能核对它是否回应了该条意见。`RR-003` 的 note 与排障一节都写明了这一点：一份语气笃定、位置写得一清二楚、却完全虚构的修改说明，照样能通过本插件。
 >
-> The relation between "no response" and "disagreement" is the point of `RR-002`: a reviewer can accept an author's
-> disagreement but not a comment passed over in silence, so **coverage** is the most direct indicator of revision
-> quality. The rule therefore fires on an empty response cell — and its note advises recording the reason rather
-> than leaving the cell blank when a comment genuinely needs no change.
+> 「没有回应」与「不同意」之间的关系，正是 `RR-002` 的要旨：审稿人可以接受作者的不同意，却不能接受一条意见被默默略过，因此**覆盖**是返修质量最直接的指标。所以这条规则会在回应栏为空时触发——它的 note 还建议：当某条意见确实无需修改时，应写明理由，而不是把该栏留空。
 >
-> **No revision deadline is built in.** Periods differ by journal and authors may ask for extensions, so `RR-005`
-> compares the response date against the **deadline written in the register**, and reports itself in `skipped`
-> when that column is empty. A finding means "this disagrees with the deadline you recorded", never "you were
-> late". The status vocabulary ships **empty** for the same reason.
+> **插件不内置任何返修期限。** 各刊期限不同，作者也可能申请延期，因此 `RR-005` 拿回应日期与**台账中写明的期限**相比，并在该栏为空时把自己记入 `skipped`。一条发现意味着「这与你记录的期限不一致」，从不意味着「你逾期了」。状态取值清单同样因此出厂为**空**。
 >
-> **Every `excerpt` in the rule pack says, in so many words, that the clause text was not obtained.** The regime
-> lives in GB/T 7713.1, the Chinese university journal editing standard, and each journal's peer-review rules. The
-> verification pass could not retrieve verbatim clause text, so the pack states the gap in the `excerpt` field
-> itself and keeps every rule at `warn` or `info`. **When the texts are in hand, replace each `excerpt` with the
-> real clause and raise `kind` to `direct`.**
+> **规则库中的每一个 `excerpt` 都明文写着：条款原文本次未取得。** 该制度见于 GB/T 7713.1（中国高校科技期刊编排规范）以及各刊的同行评议规则。核验环节无法取得逐字条款原文，因此规则库在 `excerpt` 字段本身写明这一缺口，并把每条规则保持在 `warn` 或 `info`。**待取得原文后，请把每个 `excerpt` 换成真实条款，并把 `kind` 提到 `direct`。**
 
 ## Compatibility
 
