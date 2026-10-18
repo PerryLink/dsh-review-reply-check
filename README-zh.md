@@ -40,12 +40,7 @@ dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
 | 本期刊同行评议与返修规定（本机构配置） | 无统一标准（本条依据为本机构配置的状态口径） | RR-004 |
 | 本期刊同行评议与返修规定（本机构配置） | 无统一标准（本条依据为台账写明的返修期限） | RR-005 |
 
-**Boundary:** this plugin checks a **审稿意见逐条回应表** for coverage and evidence — that every comment is
-recorded, that every comment carries an author response, that a response states the revision made and where it was
-made, that the handling status comes from your vocabulary, that response dates fall inside the revision deadline
-the register states, that the sheet names its manuscript and review round, and that comment numbers are unique. It
-does **not** decide whether a response is adequate, whether the revision is sufficient, or whether the manuscript
-should be accepted.
+**边界（中文译文，以英文原文为准）：** 本插件核对一份 **审稿意见逐条回应表** 的覆盖情况与证据——每条意见是否记录，每条意见是否带有作者回应，回应是否写明所做的修改及修改位置，处理状态是否取自你的取值口径，回应日期是否落在登记表写明的修回期限之内，表中是否写明稿件与审稿轮次，以及意见编号是否唯一。它**不**判定回应是否充分、修改是否到位，或稿件是否应当录用。
 
 > ### ⚠️ What this plugin can and cannot see
 >
