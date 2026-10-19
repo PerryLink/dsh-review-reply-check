@@ -3,6 +3,7 @@
 [English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-review-reply-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-review-reply-check?ref=badge)
 
 `dsh-review-reply-check` समीक्षा टिप्पणियों के उत्तर की एक तालिका पढ़ता है — पांडुलिपि का हेडर और प्रत्येक टिप्पणी की एक पंक्ति — और उसी तालिका की व्याप्ति तथा अभिलेख-निरंतरता की जाँच करता है: क्या प्रत्येक टिप्पणी का पाठ दर्ज है, क्या टिप्पणी लिखी होने पर उस पंक्ति में लेखक का उत्तर भी है, क्या उत्तर में किया गया संशोधन और उसका स्थान लिखा है, क्या प्रत्येक निपटान-स्थिति आपके द्वारा कॉन्फ़िगर शब्दावली से ली गई है, क्या उत्तर की तारीखें तालिका में ही लिखी समीक्षा-सीमा के भीतर हैं, क्या तालिका का हेडर अपनी पांडुलिपि और समीक्षा-चक्र बताता है, और क्या टिप्पणी-क्रमांक दोहराए नहीं गए हैं।
 
