@@ -30,6 +30,35 @@ Saída real deste plugin sobre o seu próprio fixture de teste `RR-001` — não
 A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
 
+#### Saída detalhada
+
+**Ferramenta** `review_reply_check`
+
+**Entrada**
+
+~~~json
+{"manuscriptNo":"XYZ-2026-0186","title":"某某研究","rows":[{"序号":"R1-1","审稿人":"审稿人一","审稿意见":"","处理状态":"已修改"}]}
+~~~
+ 
+**Saída**
+
+~~~json
+{
+  "id": "dsh-review-reply-check.RR-001.de09b5a6",
+  "ruleId": "RR-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "comment"
+  },
+  "found": "第 1 行「comment」为空",
+  "expected": "「comment」应填写",
+  "fix": "补填审稿意见内容；本条只核对是否填写"
+}
+~~~
+
+*Observado em `dsh-review-reply-check/tests/fixtures/RR-001/RR-001-unsafe.json (cases.json expects 1×RR-001); executed parseMaterial+runCheck, checkedAt=2026-10-06T00:00:00.000Z`*
+
 | Você pergunta | O que ele responde |
 |---|---|
 | Uma linha traz a resposta do autor, mas a célula com o texto do comentário está vazia. | `RR-001` exige o texto do comentário em cada linha: sem ele a resposta fica sem objeto e o editor não consegue ver a que comentário corresponde. A regra verifica apenas se a célula está preenchida; não julga se o comentário procede nem se é uma divergência de juízo académico. |

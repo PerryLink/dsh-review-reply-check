@@ -30,6 +30,35 @@ dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
 
+#### 详细输出
+
+**工具** `review_reply_check`
+
+**输入**
+
+~~~json
+{"manuscriptNo":"XYZ-2026-0186","title":"某某研究","rows":[{"序号":"R1-1","审稿人":"审稿人一","审稿意见":"","处理状态":"已修改"}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-review-reply-check.RR-001.de09b5a6",
+  "ruleId": "RR-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "comment"
+  },
+  "found": "第 1 行「comment」为空",
+  "expected": "「comment」应填写",
+  "fix": "补填审稿意见内容；本条只核对是否填写"
+}
+~~~
+
+*来源 `dsh-review-reply-check/tests/fixtures/RR-001/RR-001-unsafe.json (cases.json expects 1×RR-001); executed parseMaterial+runCheck, checkedAt=2026-10-06T00:00:00.000Z`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 某行填了作者回应，但意见内容栏是空的。 | `RR-001` 要求每行都抄录意见内容：缺了它，回应就失去了对象，编辑也无从判断这条回应针对哪一条意见。本条只核对意见栏是否填写，不判断该意见是否成立、是否属于学术判断分歧。 |

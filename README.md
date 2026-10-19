@@ -28,6 +28,35 @@ dsh --profile <name> --dump-config | grep 'dsh-review-reply-check'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `review_reply_check`
+
+**Input**
+
+~~~json
+{"manuscriptNo":"XYZ-2026-0186","title":"某某研究","rows":[{"序号":"R1-1","审稿人":"审稿人一","审稿意见":"","处理状态":"已修改"}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-review-reply-check.RR-001.de09b5a6",
+  "ruleId": "RR-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "comment"
+  },
+  "found": "第 1 行「comment」为空",
+  "expected": "「comment」应填写",
+  "fix": "补填审稿意见内容；本条只核对是否填写"
+}
+~~~
+
+*Observed from `dsh-review-reply-check/tests/fixtures/RR-001/RR-001-unsafe.json (cases.json expects 1×RR-001); executed parseMaterial+runCheck, checkedAt=2026-10-06T00:00:00.000Z`*
+
 | You ask | What it answers |
 |---|---|
 | A row carries an author response but the cell holding the comment text is empty. | `RR-001` requires the comment text on every row: without it the response has no object, and the editor cannot see which comment it answers. The rule checks only that the cell is filled — it does not judge whether the comment holds or whether it is a matter of academic disagreement. |
