@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-dark.svg">
-  <img src="docs/assets/dsh-review-reply-check-flow-light.svg" width="100%" alt="Fluxo do dsh-review-reply-check: tabela de respostas JSON/YAML → parseMaterial → pacote de regras RR-001…RR-007 → runCheck → achados com locator e lista skipped">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-review-reply-check-hero-en-light.webp" width="100%" alt="Imagem principal do dsh-review-reply-check: tabela de respostas com pares comentário/resposta; RR-001…RR-003 marcam as células em falta">
 </picture>
 
 # dsh-review-reply-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-review-reply-check
 `dsh-review-reply-check` lê uma tabela de respostas aos comentários de revisão —o cabeçalho do manuscrito mais uma linha por comentário— e verifica a cobertura e o rastro documental dessa própria tabela: que o texto de cada comentário esteja registado, que toda linha com comentário preenchido traga resposta do autor, que a resposta indique a alteração feita e onde foi feita, que cada estado de tratamento venha do vocabulário que você configurar, que as datas de resposta caiam dentro do prazo de revisão que a própria tabela declara, que o cabeçalho declare o seu manuscrito e a sua ronda de revisão, e que os números de comentário não se repitam.
 
 Registra a ferramenta `review_reply_check` e devolve achados com `locator` segundo um pacote de regras versionado; as verificações que não podem correr são escritas em `skipped` com o motivo, nunca passam em silêncio. Tudo acontece no host: o original não é alterado, não há rede, não se chama qualquer modelo e o plugin não decide se uma resposta é suficiente, se a revisão está bem feita ou se o manuscrito deve ser aceito.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-review-reply-check-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-review-reply-check: a tabela e o pacote de regras entram em runTableCheck; a escada condicional RR-001…RR-003 e o banco de verificações RR-004…RR-007 produzem issues e skipped">
+</picture>
 
 ## Instalação em três passos
 

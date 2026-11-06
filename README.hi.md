@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-dark.svg">
-  <img src="docs/assets/dsh-review-reply-check-flow-light.svg" width="100%" alt="dsh-review-reply-check प्रवाह: JSON/YAML उत्तर-तालिका → parseMaterial → नियम-पैक RR-001…RR-007 → runCheck → locator सहित निष्कर्ष और skipped सूची">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-review-reply-check-hero-en-light.webp" width="100%" alt="dsh-review-reply-check मुख्य चित्र: समीक्षा-टिप्पणी उत्तर तालिका, टिप्पणी/उत्तर जोड़े और RR-001…RR-003 द्वारा चिह्नित अनुपस्थित कक्ष">
 </picture>
 
 # dsh-review-reply-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-review-reply-check
 `dsh-review-reply-check` समीक्षा टिप्पणियों के उत्तर की एक तालिका पढ़ता है — पांडुलिपि का हेडर और प्रत्येक टिप्पणी की एक पंक्ति — और उसी तालिका की व्याप्ति तथा अभिलेख-निरंतरता की जाँच करता है: क्या प्रत्येक टिप्पणी का पाठ दर्ज है, क्या टिप्पणी लिखी होने पर उस पंक्ति में लेखक का उत्तर भी है, क्या उत्तर में किया गया संशोधन और उसका स्थान लिखा है, क्या प्रत्येक निपटान-स्थिति आपके द्वारा कॉन्फ़िगर शब्दावली से ली गई है, क्या उत्तर की तारीखें तालिका में ही लिखी समीक्षा-सीमा के भीतर हैं, क्या तालिका का हेडर अपनी पांडुलिपि और समीक्षा-चक्र बताता है, और क्या टिप्पणी-क्रमांक दोहराए नहीं गए हैं।
 
 यह `review_reply_check` उपकरण पंजीकृत करता है और संस्करणबद्ध नियम-पैक के अंतर्गत `locator` सहित निष्कर्ष लौटाता है; जो जाँचें नहीं चल सकीं वे कारण के साथ `skipped` में लिखी जाती हैं, कभी चुपचाप पास नहीं होतीं। सब कुछ होस्ट पर: मूल नहीं बदला जाता, कोई नेटवर्क नहीं, कोई मॉडल कॉल नहीं, और प्लगइन यह तय नहीं करता कि उत्तर पर्याप्त है, संशोधन ठीक है, या पांडुलिपि स्वीकार की जानी चाहिए।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-review-reply-check-flow-v5-light.svg" width="100%" alt="dsh-review-reply-check संरचना: सामग्री और नियम-पैक runTableCheck में जाते हैं; सशर्त सीढ़ी RR-001…RR-003 और समकोणीय जाँच-बेंच RR-004…RR-007 issues और skipped उत्पन्न करते हैं">
+</picture>
 
 ## तीन चरणों में शुरुआत
 

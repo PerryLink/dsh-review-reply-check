@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-dark.svg">
-  <img src="docs/assets/dsh-review-reply-check-flow-light.svg" width="100%" alt="dsh-review-reply-check pipeline: JSON/YAML response table → parseMaterial → rule pack RR-001…RR-007 → runCheck → findings with a locator plus a skipped list">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-review-reply-check-hero-en-light.webp" width="100%" alt="dsh-review-reply-check hero: a review-response table with comment/response pairs; RR-001…RR-003 stamp the missing cells">
 </picture>
 
 # dsh-review-reply-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-review-reply-check
 `dsh-review-reply-check` reads one review-comment response table — the manuscript header plus one row per comment — and checks that table's own coverage and paper trail: that each comment's text is recorded, that every row carrying a comment also carries an author response, that a response states the revision made and where it was made, that each handling status comes from the vocabulary you configure, that response dates fall inside the revision deadline the table itself states, that the table header declares its manuscript and review round, and that comment numbers are not repeated.
 
 It registers the `review_reply_check` tool and returns findings with a `locator` under a versioned rule pack; checks that cannot run are written into `skipped` with a reason, never passed silently. Pure host side: the original is never modified, nothing is sent over the network, no model is called, and the plugin never decides whether a response is adequate, whether the revision is sufficient, or whether the manuscript should be accepted.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-review-reply-check-flow-v5-light.svg" width="100%" alt="dsh-review-reply-check structure: material and rule pack enter runTableCheck; a coverage ladder (RR-001…RR-003) and an orthogonal check bench (RR-004…RR-007) produce issues and skipped">
+</picture>
 
 ## Three-step setup
 

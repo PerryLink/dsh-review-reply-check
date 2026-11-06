@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-dark.svg">
-  <img src="docs/assets/dsh-review-reply-check-flow-light.svg" width="100%" alt="dsh-review-reply-check 数据流：JSON/YAML 回应表 → parseMaterial → 规则库 RR-001…RR-007 → runCheck → 带 locator 的发现与 skipped 清单">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-review-reply-check-hero-zh-light.webp" width="100%" alt="dsh-review-reply-check 主图：审稿意见逐条回应表，意见与回应成对连接，RR-001…RR-003 标出缺失的栏">
 </picture>
 
 # dsh-review-reply-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-review-reply-check
 `dsh-review-reply-check` 读取一份审稿意见逐条回应表——稿件表头加每条意见一行——核对这份台账自身的覆盖完整性与留痕：每条意见的意见内容是否已抄录、凡填了意见内容的行是否都有作者回应、回应是否写明修改说明与修改位置、每行的处理状态是否取自你配置的状态口径、回应日期是否落在表内写明的返修期限之内、表头是否声明稿件编号与审稿轮次、意见序号是否重复。
 
 它注册 `review_reply_check` 工具，按版本化规则库给出带 `locator` 的发现；无法执行的检查写进 `skipped` 并写明原因，绝不静默通过。纯主机端：不改原件、不联网、不调用模型，也不判断回应是否充分、修改是否到位或稿件是否应当录用。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-review-reply-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-review-reply-check-flow-v5-light.svg" width="100%" alt="dsh-review-reply-check 结构图：材料与规则库汇入 runTableCheck，覆盖阶梯 RR-001…RR-003 与旁路校验 RR-004…RR-007 分别产出 issues 与 skipped">
+</picture>
 
 ## 三步上手
 
