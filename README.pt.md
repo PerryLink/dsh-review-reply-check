@@ -45,6 +45,11 @@ Registra a ferramenta `review_reply_check` e devolve achados com `locator` segun
   <img src="docs/assets/dsh-review-reply-check-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-review-reply-check: a tabela e o pacote de regras entram em runTableCheck; a escada condicional RR-001…RR-003 e o banco de verificações RR-004…RR-007 produzem issues e skipped">
 </picture>
 
+![dsh-review-reply-check: execução real de terminal](docs/assets/dsh-review-reply-check-demo.gif)
+
+*Repetição animada de uma execução real registrada neste repositório.*
+
+
 ## Instalação em três passos
 
 1. **Instalar** (escolha um canal):

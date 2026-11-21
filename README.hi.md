@@ -45,6 +45,11 @@ dsh plugin --profile <name> add dsh-review-reply-check
   <img src="docs/assets/dsh-review-reply-check-flow-v5-light.svg" width="100%" alt="dsh-review-reply-check संरचना: सामग्री और नियम-पैक runTableCheck में जाते हैं; सशर्त सीढ़ी RR-001…RR-003 और समकोणीय जाँच-बेंच RR-004…RR-007 issues और skipped उत्पन्न करते हैं">
 </picture>
 
+![dsh-review-reply-check का असली टर्मिनल रन](docs/assets/dsh-review-reply-check-demo.gif)
+
+*इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
+
+
 ## तीन चरणों में शुरुआत
 
 1. **इंस्टॉल करें** (कोई एक चैनल चुनें):

@@ -45,6 +45,11 @@ It registers the `review_reply_check` tool and returns findings with a `locator`
   <img src="docs/assets/dsh-review-reply-check-flow-v5-light.svg" width="100%" alt="dsh-review-reply-check structure: material and rule pack enter runTableCheck; a coverage ladder (RR-001…RR-003) and an orthogonal check bench (RR-004…RR-007) produce issues and skipped">
 </picture>
 
+![dsh-review-reply-check: real terminal run](docs/assets/dsh-review-reply-check-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
+
 ## Three-step setup
 
 1. **Install** (pick one channel):

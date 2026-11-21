@@ -36,6 +36,10 @@ dsh plugin --profile <name> add dsh-review-reply-check
 
 ## 它是什么
 
+![dsh-review-reply-check 真实终端运行](docs/assets/dsh-review-reply-check-demo.gif)
+
+*本仓库一次真实运行的动图回放。*
+
 `dsh-review-reply-check` 读取一份审稿意见逐条回应表——稿件表头加每条意见一行——核对这份台账自身的覆盖完整性与留痕：每条意见的意见内容是否已抄录、凡填了意见内容的行是否都有作者回应、回应是否写明修改说明与修改位置、每行的处理状态是否取自你配置的状态口径、回应日期是否落在表内写明的返修期限之内、表头是否声明稿件编号与审稿轮次、意见序号是否重复。
 
 它注册 `review_reply_check` 工具，按版本化规则库给出带 `locator` 的发现；无法执行的检查写进 `skipped` 并写明原因，绝不静默通过。纯主机端：不改原件、不联网、不调用模型，也不判断回应是否充分、修改是否到位或稿件是否应当录用。
