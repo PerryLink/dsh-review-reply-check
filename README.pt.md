@@ -11,6 +11,8 @@
 
 Um verificador puramente local para editores de periódicos: lê uma tabela de respostas aos comentários de revisão, aplica um pacote de regras versionado e aponta lacunas de cobertura e de rastro documental — sem alterar o original, sem rede, sem chamadas ao modelo e sem emitir veredito.
 
+Última verificação: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Instalação](#instalação-em-três-passos) · [Configuração](#configuração) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -48,7 +50,6 @@ Registra a ferramenta `review_reply_check` e devolve achados com `locator` segun
 ![dsh-review-reply-check: execução real de terminal](docs/assets/dsh-review-reply-check-demo.gif)
 
 *Repetição animada de uma execução real registrada neste repositório.*
-
 
 ## Instalação em três passos
 

@@ -11,6 +11,8 @@
 
 面向期刊编辑的纯主机端核查插件：读取一份审稿意见逐条回应表，按版本化规则库核对覆盖完整性与留痕；不改原件、不联网、不调用模型，也不作合规或责任判断。
 
+最近一次核验：DeepSeek Harness `dsh-v0.2.3-alpha.1`（2026-11-22）。
+
 [安装](#三步上手) · [配置](#配置) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
