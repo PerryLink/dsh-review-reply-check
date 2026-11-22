@@ -7,6 +7,8 @@
 
 # dsh-review-reply-check
 
+Current version `0.2.12`.
+
 **Check every review comment gets an answer — and that the paper trail says what changed and where.**
 
 A pure host-side checker for journal editors: it reads one review-comment response table, applies a versioned rule pack, and reports coverage and paper-trail gaps — without modifying the original, calling the network or a model, or pronouncing a verdict.
